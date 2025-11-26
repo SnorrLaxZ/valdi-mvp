@@ -2,8 +2,10 @@
 
 import { ReactNode } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
+import { useTranslations, useLocale } from 'next-intl'
 import { supabase } from '@/lib/supabase'
+import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 
 interface NavItem {
   href: string
@@ -21,10 +23,13 @@ interface SidebarLayoutProps {
 
 export function SidebarLayout({ title, subtitle, navItems, activePath, children }: SidebarLayoutProps) {
   const router = useRouter()
+  const pathname = usePathname()
+  const locale = useLocale()
+  const t = useTranslations()
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
-    router.push('/')
+    router.push(`/${locale}`)
   }
 
   return (
@@ -60,12 +65,15 @@ export function SidebarLayout({ title, subtitle, navItems, activePath, children 
           })}
         </nav>
 
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 space-y-2">
+          <div className="px-3">
+            <LanguageSwitcher />
+          </div>
           <button
             onClick={handleLogout}
             className="w-full text-left px-3 py-2.5 text-gray-600 hover:bg-gray-100 rounded-md text-sm"
           >
-            Logga ut
+            {t('common.logout')}
           </button>
         </div>
       </aside>

@@ -3,15 +3,21 @@
  * Uses GPT-4 to analyze call transcripts and score qualification
  */
 
-import OpenAI from 'openai'
+// Optional OpenAI import - only load if package is installed
+let OpenAI: any = null
+let openai: any = null
 
-const openaiApiKey = process.env.OPENAI_API_KEY!
-
-if (!openaiApiKey) {
-  console.warn('OpenAI API key not configured')
+try {
+  OpenAI = require('openai').default || require('openai')
+  const openaiApiKey = process.env.OPENAI_API_KEY
+  if (openaiApiKey && OpenAI) {
+    openai = new OpenAI({ apiKey: openaiApiKey })
+  } else {
+    console.warn('OpenAI API key not configured - AI qualification features disabled')
+  }
+} catch (error) {
+  console.warn('OpenAI package not installed - AI qualification features disabled')
 }
-
-const openai = new OpenAI({ apiKey: openaiApiKey })
 
 /**
  * Dynamic qualification criteria based on company's campaign settings
@@ -66,6 +72,10 @@ export async function analyzeQualification(
   },
   qualificationThreshold?: number // Optional override threshold
 ): Promise<QualificationScore | null> {
+  if (!openai) {
+    throw new Error('OpenAI client not initialized - API key required')
+  }
+  
   // Use campaign threshold if provided, otherwise default to 70
   const threshold = qualificationThreshold ?? campaignCriteria.qualification_threshold ?? 70
   try {
@@ -131,13 +141,13 @@ export async function analyzeQualification(
     const qualificationScore: QualificationScore = {
       overall_score: Math.round(overallScore),
       criteria_scores: criteriaScores,
-      is_qualified: overallScore >= qualificationThreshold,
+      is_qualified: overallScore >= threshold,
       confidence: result.confidence || 0.8,
       reasoning: result.reasoning || '',
       key_quotes: result.key_quotes || [],
       objections: result.objections || [],
       next_steps: result.next_steps || [],
-      meeting_readiness: result.meeting_readiness || (overallScore >= qualificationThreshold ? 'ready' : 'not_ready'),
+      meeting_readiness: result.meeting_readiness || (overallScore >= threshold ? 'ready' : 'not_ready'),
       criteria_met: criteriaMet,
       criteria_unmet: criteriaUnmet,
     }
@@ -231,6 +241,10 @@ export async function extractMeetingDetails(transcript: string): Promise<{
   meeting_time?: string
   notes?: string
 } | null> {
+  if (!openai) {
+    throw new Error('OpenAI client not initialized - API key required')
+  }
+  
   try {
     const response = await openai.chat.completions.create({
       model: 'gpt-4-turbo-preview',

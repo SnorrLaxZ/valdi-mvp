@@ -1,0 +1,204 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "dashboard": "Dashboard",
+    "campaigns": "Campaigns",
+    "earnings": "Earnings",
+    "logout": "Log out",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "phone": "Phone",
+    "company": "Company",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "noResults": "No results",
+    "error": "Error",
+    "success": "Success",
+    "confirm": "Confirm",
+    "close": "Close",
+    "callRecording": "Call Recording",
+    "uploadLeads": "Upload Leads",
+    "meetingReview": "Meeting Review",
+    "disputeCenter": "Dispute Center",
+    "uploading": "Uploading...",
+    "uploadSuccessful": "Upload Successful!",
+    "errorLoading": "Error loading {resource}",
+    "lastSynced": "Last synced:",
+    "statusChanged": "Status changed",
+    "meeting": "meeting",
+    "rejected": "Rejected",
+    "created": "Created",
+    "perMeeting": "per meeting",
+    "applied": "Applied:",
+    "approved": "Approved",
+    "reason": "Reason",
+    "adminResolution": "Admin Resolution",
+    "resolved": "Resolved:",
+    "rejectionReason": "Rejection Reason"
+  },
+  "auth": {
+    "login": "Log in",
+    "signup": "Sign up",
+    "loggingIn": "Logging in...",
+    "signingUp": "Signing up...",
+    "noAccount": "Don't have an account?",
+    "register": "Sign up",
+    "forgotPassword": "Forgot password?",
+    "resetPassword": "Reset password",
+    "invalidCredentials": "Invalid email or password",
+    "unknownUserType": "Unknown user type"
+  },
+  "home": {
+    "title": "On-Demand B2B Meeting Bookings",
+    "subtitle": "Get access to pre-approved SDRs. Pay only per qualified meeting. Pause anytime. No commitment.",
+    "forCompanies": "For Companies",
+    "forSdrs": "For SDRs",
+    "getStarted": "Get Started",
+    "quickStart": "Quick Start",
+    "quickStartDesc": "Start getting meetings within days, not months",
+    "payPerMeeting": "Pay Per Meeting",
+    "payPerMeetingDesc": "Only €300 per qualified meeting. No retainers.",
+    "preApprovedSdrs": "Pre-Approved SDRs",
+    "preApprovedSdrsDesc": "Every SDR is reviewed and quality-assured",
+    "copyright": "© 2025 Valdi. All rights reserved."
+  },
+  "sdr": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Overview of your meetings and earnings",
+      "approved": "Approved",
+      "totalEarnings": "Total Earnings",
+      "approvedPayments": "Approved payments",
+      "pending": "Pending",
+      "availableCampaigns": "Available Campaigns",
+      "noCampaigns": "No campaigns right now"
+    },
+    "earnings": {
+      "title": "Earnings",
+      "subtitle": "Overview of your income and payments",
+      "totalEarnings": "Total Earnings",
+      "pending": "Pending",
+      "paid": "Paid",
+      "paidDesc": "Paid out",
+      "pendingDesc": "Under review or waiting for payment",
+      "history": "Earnings History",
+      "noMeetings": "No meetings yet",
+      "logFirstMeeting": "Log your first meeting",
+      "approved": "approved meetings",
+      "status": {
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "pending": "Pending"
+      },
+      "rejectionReasons": {
+        "wrong_person": "Wrong person / not decision maker",
+        "no_need": "No active need",
+        "no_budget": "No budget",
+        "no_show": "Meeting didn't happen",
+        "poor_quality": "Poor quality",
+        "other": "Other"
+      },
+      "waitingPayment": "Waiting for payment"
+    },
+    "campaigns": {
+      "title": "Available Campaigns",
+      "subtitle": "Apply to campaigns and start booking meetings",
+      "noCampaigns": "No active campaigns right now",
+      "loading": "Loading campaigns..."
+    },
+    "meetings": {
+      "new": {
+        "title": "Log New Meeting",
+        "backToDashboard": "← Back to dashboard",
+        "noApprovedCampaigns": "No approved campaigns",
+        "noApprovedCampaignsDesc": "You don't have any approved campaigns yet. Apply to a campaign first!",
+        "findCampaigns": "Find Campaigns",
+        "contactPlaceholder": "Contact name"
+      }
+    }
+  },
+  "company": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Overview of campaigns and meetings",
+      "campaigns": "Campaigns",
+      "approved": "Approved",
+      "meetings": "Meetings",
+      "recentCampaigns": "Recent Campaigns",
+      "noCampaigns": "No campaigns yet"
+    },
+    "campaigns": {
+      "title": "Campaigns",
+      "subtitle": "Manage your outbound campaigns",
+      "noCampaigns": "No campaigns yet",
+      "created": "Created",
+      "noMeetings": "No meetings yet",
+      "assignedSdrs": "Assigned SDRs"
+    },
+    "meetings": {
+      "title": "Meetings",
+      "subtitle": "Review and approve meetings",
+      "loading": "Loading meetings...",
+      "approved": "Approved",
+      "all": "All",
+      "pending": "Pending",
+      "rejected": "Rejected",
+      "noMeetings": "No meetings yet",
+      "noFilteredMeetings": "No {filter} meetings",
+      "statusChanged": "Status changed"
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Admin Dashboard"
+    }
+  },
+  "meeting": {
+    "scheduled": "Meeting scheduled for",
+    "status": {
+      "pending": "Pending",
+      "qualified": "Qualified",
+      "not_qualified": "Not Qualified",
+      "disputed": "Disputed"
+    },
+    "rejectionReason": "Rejected",
+    "timeline": {
+      "title": "Meeting Timeline",
+      "description": "Complete lifecycle: SDR → AI → Admin → Client",
+      "noEvents": "No timeline events yet"
+    },
+    "review": {
+      "title": "Review Meeting",
+      "approve": "Approve",
+      "reject": "Reject",
+      "rejectionReason": "Rejection reason",
+      "approveSuccess": "Meeting approved successfully",
+      "rejectSuccess": "Meeting rejected"
+    }
+  },
+  "leads": {
+    "upload": {
+      "title": "Upload Leads",
+      "description": "Upload a CSV file with lead information",
+      "success": "{count} leads have been imported successfully"
+    }
+  },
+  "disputes": {
+    "manage": "Manage disputes for your meetings"
+  },
+  "dispute": {
+    "title": "Disputes",
+    "created": "Created",
+    "resolved": "Resolved"
+  }
+}
+

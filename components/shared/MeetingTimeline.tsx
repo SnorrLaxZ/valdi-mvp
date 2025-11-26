@@ -1,5 +1,6 @@
 'use client'
 
+import { useLocale, useTranslations } from 'next-intl'
 import { Clock, User, Bot, Shield, Building2, CheckCircle2, XCircle, AlertCircle } from 'lucide-react'
 
 interface TimelineEvent {
@@ -17,6 +18,8 @@ interface MeetingTimelineProps {
 }
 
 export function MeetingTimeline({ events, className = '' }: MeetingTimelineProps) {
+  const locale = useLocale()
+  const t = useTranslations()
   const getActorIcon = (actor: string) => {
     switch (actor) {
       case 'sdr':
@@ -62,7 +65,7 @@ export function MeetingTimeline({ events, className = '' }: MeetingTimelineProps
 
   const formatTimestamp = (timestamp: string) => {
     const date = new Date(timestamp)
-    return date.toLocaleString('sv-SE', {
+    return date.toLocaleString(locale === 'sv' ? 'sv-SE' : 'en-US', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -74,12 +77,12 @@ export function MeetingTimeline({ events, className = '' }: MeetingTimelineProps
   return (
     <div className={`bg-white border border-gray-200 rounded-lg ${className}`}>
       <div className="p-4 border-b border-gray-200">
-        <h3 className="text-sm font-medium text-gray-900">Meeting Timeline</h3>
-        <p className="text-xs text-gray-500 mt-1">Complete lifecycle: SDR → AI → Admin → Client</p>
+        <h3 className="text-sm font-medium text-gray-900">{t('meeting.timeline.title')}</h3>
+        <p className="text-xs text-gray-500 mt-1">{t('meeting.timeline.description')}</p>
       </div>
       <div className="p-4">
         {events.length === 0 ? (
-          <p className="text-sm text-gray-400 italic">No timeline events yet</p>
+          <p className="text-sm text-gray-400 italic">{t('meeting.timeline.noEvents')}</p>
         ) : (
           <div className="relative">
             {/* Timeline line */}

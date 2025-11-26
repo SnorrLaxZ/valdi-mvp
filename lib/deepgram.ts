@@ -3,15 +3,23 @@
  * Handles real-time audio transcription from Twilio Media Streams
  */
 
-import { createClient } from '@deepgram/sdk'
+// Deepgram SDK is optional - only load if available
+let deepgram: any = null
+let createClient: any = null
 
-const deepgramApiKey = process.env.DEEPGRAM_API_KEY!
-
-if (!deepgramApiKey) {
-  console.warn('Deepgram API key not configured')
+try {
+  const deepgramModule = require('@deepgram/sdk')
+  createClient = deepgramModule.createClient || deepgramModule.default?.createClient
+  
+  const deepgramApiKey = process.env.DEEPGRAM_API_KEY
+  if (deepgramApiKey && createClient) {
+    deepgram = createClient(deepgramApiKey)
+  } else {
+    console.warn('Deepgram API key not configured - transcription features will be disabled')
+  }
+} catch (error) {
+  console.warn('Deepgram SDK not installed - transcription features will be disabled')
 }
-
-const deepgram = createClient(deepgramApiKey)
 
 export interface TranscriptionConfig {
   language?: 'sv' | 'no' | 'en' // Swedish, Norwegian, English
@@ -29,6 +37,11 @@ export interface TranscriptionConfig {
 export async function createTranscriptionConnection(
   config: TranscriptionConfig = {}
 ): Promise<{ url: string; token: string } | null> {
+  if (!deepgram) {
+    console.warn('Deepgram client not initialized')
+    return null
+  }
+  
   try {
     const {
       result: { key },
@@ -105,6 +118,11 @@ export async function transcribeAudioFile(
   audioUrl: string,
   language: 'sv' | 'no' | 'en' = 'sv'
 ): Promise<string | null> {
+  if (!deepgram) {
+    console.warn('Deepgram client not initialized')
+    return null
+  }
+  
   try {
     const { result, error } = await deepgram.listen.prerecorded.transcribeUrl(
       audioUrl,

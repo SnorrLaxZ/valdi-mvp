@@ -1,0 +1,204 @@
+{
+  "common": {
+    "loading": "Laddar...",
+    "dashboard": "Dashboard",
+    "campaigns": "Kampanjer",
+    "earnings": "Intjäning",
+    "logout": "Logga ut",
+    "email": "Email",
+    "password": "Lösenord",
+    "name": "Namn",
+    "phone": "Telefon",
+    "company": "Företag",
+    "save": "Spara",
+    "cancel": "Avbryt",
+    "submit": "Skicka",
+    "delete": "Radera",
+    "edit": "Redigera",
+    "back": "Tillbaka",
+    "next": "Nästa",
+    "previous": "Föregående",
+    "search": "Sök",
+    "filter": "Filtrera",
+    "noResults": "Inga resultat",
+    "error": "Fel",
+    "success": "Framgång",
+    "confirm": "Bekräfta",
+    "close": "Stäng",
+    "callRecording": "Samtalsinspelning",
+    "uploadLeads": "Ladda upp leads",
+    "meetingReview": "Granska möte",
+    "disputeCenter": "Disputcenter",
+    "uploading": "Laddar upp...",
+    "uploadSuccessful": "Uppladdning lyckades!",
+    "errorLoading": "Fel vid laddning av {resource}",
+    "lastSynced": "Senast synkad:",
+    "statusChanged": "Status ändrad",
+    "meeting": "möte",
+    "rejected": "Nekad",
+    "created": "Skapad",
+    "perMeeting": "per möte",
+    "applied": "Ansökt:",
+    "approved": "Godkänd",
+    "reason": "Anledning",
+    "adminResolution": "Adminbeslut",
+    "resolved": "Löst:",
+    "rejectionReason": "Anledning till nekning"
+  },
+  "auth": {
+    "login": "Logga in",
+    "signup": "Registrera dig",
+    "loggingIn": "Loggar in...",
+    "signingUp": "Registrerar...",
+    "noAccount": "Har du inget konto?",
+    "register": "Registrera dig",
+    "forgotPassword": "Glömt lösenord?",
+    "resetPassword": "Återställ lösenord",
+    "invalidCredentials": "Fel email eller lösenord",
+    "unknownUserType": "Okänd användartyp"
+  },
+  "home": {
+    "title": "On-Demand B2B Mötesbokningar",
+    "subtitle": "Få tillgång till förgodkända SDR:er. Betala endast per kvalificerat möte. Pausa när som helst. Ingen bindningstid.",
+    "forCompanies": "För Företag",
+    "forSdrs": "För SDR:er",
+    "getStarted": "Kom igång",
+    "quickStart": "Snabb Start",
+    "quickStartDesc": "Börja få möten inom dagar, inte månader",
+    "payPerMeeting": "Betala Per Möte",
+    "payPerMeetingDesc": "Endast €300 per kvalificerat möte. Inga retainers.",
+    "preApprovedSdrs": "Förgodkända SDR:er",
+    "preApprovedSdrsDesc": "Varje SDR är granskad och kvalitetssäkrad",
+    "copyright": "© 2025 Valdi. Alla rättigheter förbehållna."
+  },
+  "sdr": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Översikt över dina möten och intjäning",
+      "approved": "Godkända",
+      "totalEarnings": "Total Intjäning",
+      "approvedPayments": "Godkända betalningar",
+      "pending": "Väntande",
+      "availableCampaigns": "Tillgängliga Kampanjer",
+      "noCampaigns": "Inga kampanjer just nu"
+    },
+    "earnings": {
+      "title": "Intjäning",
+      "subtitle": "Översikt över dina intäkter och betalningar",
+      "totalEarnings": "Total Intjäning",
+      "pending": "Väntande",
+      "paid": "Betald",
+      "paidDesc": "Utbetald",
+      "pendingDesc": "Under granskning eller väntar på betalning",
+      "history": "Intjäningshistorik",
+      "noMeetings": "Inga möten ännu",
+      "logFirstMeeting": "Logga ditt första möte",
+      "approved": "Godkända möten",
+      "status": {
+        "approved": "Godkänd",
+        "rejected": "Nekad",
+        "pending": "Väntar"
+      },
+      "rejectionReasons": {
+        "wrong_person": "Fel person / inte beslutsfattare",
+        "no_need": "Inget aktivt behov",
+        "no_budget": "Ingen budget",
+        "no_show": "Mötet hände inte",
+        "poor_quality": "Dålig kvalitet",
+        "other": "Annat"
+      },
+      "waitingPayment": "Väntar på betalning"
+    },
+    "campaigns": {
+      "title": "Tillgängliga Kampanjer",
+      "subtitle": "Ansök till kampanjer och börja boka möten",
+      "noCampaigns": "Inga aktiva kampanjer just nu",
+      "loading": "Laddar kampanjer..."
+    },
+    "meetings": {
+      "new": {
+        "title": "Logga Nytt Möte",
+        "backToDashboard": "← Tillbaka till dashboard",
+        "noApprovedCampaigns": "Inga godkända kampanjer",
+        "noApprovedCampaignsDesc": "Du har inga godkända kampanjer ännu. Ansök till en kampanj först!",
+        "findCampaigns": "Hitta Kampanjer",
+        "contactPlaceholder": "Kontaktnamn"
+      }
+    }
+  },
+  "company": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Översikt över kampanjer och möten",
+      "campaigns": "Kampanjer",
+      "approved": "Godkända",
+      "meetings": "Möten",
+      "recentCampaigns": "Senaste Kampanjer",
+      "noCampaigns": "Inga kampanjer ännu"
+    },
+    "campaigns": {
+      "title": "Kampanjer",
+      "subtitle": "Hantera dina outbound-kampanjer",
+      "noCampaigns": "Inga kampanjer ännu",
+      "created": "Skapad",
+      "noMeetings": "Inga möten ännu",
+      "assignedSdrs": "Tilldelade SDR:er"
+    },
+    "meetings": {
+      "title": "Möten",
+      "subtitle": "Granska och godkänn möten",
+      "loading": "Laddar möten...",
+      "approved": "Godkända",
+      "all": "Alla",
+      "pending": "Väntande",
+      "rejected": "Nekade",
+      "noMeetings": "Inga möten ännu",
+      "noFilteredMeetings": "Inga {filter} möten",
+      "statusChanged": "Status ändrad"
+    }
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Admin Dashboard"
+    }
+  },
+  "meeting": {
+    "scheduled": "Möte schemalagt för",
+    "status": {
+      "pending": "Väntar",
+      "qualified": "Godkänd",
+      "not_qualified": "Nekad",
+      "disputed": "Disputerad"
+    },
+    "rejectionReason": "Nekad",
+    "timeline": {
+      "title": "Möteshistorik",
+      "description": "Fullständig livscykel: SDR → AI → Admin → Klient",
+      "noEvents": "Inga händelser ännu"
+    },
+    "review": {
+      "title": "Granska Möte",
+      "approve": "Godkänn",
+      "reject": "Neka",
+      "rejectionReason": "Anledning till nekning",
+      "approveSuccess": "Möte godkänt",
+      "rejectSuccess": "Möte nekad"
+    }
+  },
+  "leads": {
+    "upload": {
+      "title": "Ladda upp leads",
+      "description": "Ladda upp en CSV-fil med leadinformation",
+      "success": "{count} leads har importerats"
+    }
+  },
+  "disputes": {
+    "manage": "Hantera disputer för dina möten"
+  },
+  "dispute": {
+    "title": "Disputer",
+    "created": "Skapad",
+    "resolved": "Löst"
+  }
+}
+

@@ -5,15 +5,17 @@
 
 import twilio from 'twilio'
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID!
-const authToken = process.env.TWILIO_AUTH_TOKEN!
-const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER!
+const accountSid = process.env.TWILIO_ACCOUNT_SID || ''
+const authToken = process.env.TWILIO_AUTH_TOKEN || ''
+const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER || ''
 
-if (!accountSid || !authToken) {
-  console.warn('Twilio credentials not configured')
+let client: ReturnType<typeof twilio> | null = null
+
+if (accountSid && authToken) {
+  client = twilio(accountSid, authToken)
+} else {
+  console.warn('Twilio credentials not configured - Twilio features disabled')
 }
-
-const client = twilio(accountSid, authToken)
 
 export interface TwilioCallConfig {
   sdrId: string
@@ -28,6 +30,10 @@ export interface TwilioCallConfig {
  * Initiate outbound call via Twilio
  */
 export async function initiateCall(config: TwilioCallConfig): Promise<string> {
+  if (!client) {
+    throw new Error('Twilio client not initialized - credentials required')
+  }
+  
   try {
     const call = await client.calls.create({
       to: config.to,
@@ -40,10 +46,8 @@ export async function initiateCall(config: TwilioCallConfig): Promise<string> {
       record: true, // Record call for backup
       recordingStatusCallback: `${process.env.NEXT_PUBLIC_APP_URL}/api/twilio/voice/recording`,
       recordingStatusCallbackMethod: 'POST',
-      // Enable Media Streams for real-time transcription
-      streamUrl: config.mediaStreamUrl || `${process.env.NEXT_PUBLIC_APP_URL}/api/twilio/media-streams`,
-      streamName: `call-${config.sdrId}-${Date.now()}`,
-    })
+      // Note: Media Streams are configured via TwiML, not call options
+    } as any)
 
     return call.sid
   } catch (error: any) {
@@ -56,6 +60,10 @@ export async function initiateCall(config: TwilioCallConfig): Promise<string> {
  * Get available phone numbers in Sweden
  */
 export async function getSwedishPhoneNumbers(): Promise<any[]> {
+  if (!client) {
+    throw new Error('Twilio client not initialized - credentials required')
+  }
+  
   try {
     const numbers = await client.availablePhoneNumbers('SE')
       .local
@@ -81,6 +89,10 @@ export async function getSwedishPhoneNumbers(): Promise<any[]> {
  * Purchase phone number for SDR
  */
 export async function purchasePhoneNumber(phoneNumber: string): Promise<boolean> {
+  if (!client) {
+    throw new Error('Twilio client not initialized - credentials required')
+  }
+  
   try {
     const incomingPhoneNumber = await client.incomingPhoneNumbers.create({
       phoneNumber,
@@ -101,6 +113,10 @@ export async function purchasePhoneNumber(phoneNumber: string): Promise<boolean>
  * Release phone number
  */
 export async function releasePhoneNumber(phoneNumberSid: string): Promise<boolean> {
+  if (!client) {
+    throw new Error('Twilio client not initialized - credentials required')
+  }
+  
   try {
     await client.incomingPhoneNumbers(phoneNumberSid).remove()
     return true
@@ -114,6 +130,10 @@ export async function releasePhoneNumber(phoneNumberSid: string): Promise<boolea
  * Get call details
  */
 export async function getCallDetails(callSid: string): Promise<any> {
+  if (!client) {
+    throw new Error('Twilio client not initialized - credentials required')
+  }
+  
   try {
     const call = await client.calls(callSid).fetch()
     return {
@@ -137,6 +157,10 @@ export async function getCallDetails(callSid: string): Promise<any> {
  * End call
  */
 export async function endCall(callSid: string): Promise<boolean> {
+  if (!client) {
+    throw new Error('Twilio client not initialized - credentials required')
+  }
+  
   try {
     await client.calls(callSid).update({ status: 'completed' })
     return true
