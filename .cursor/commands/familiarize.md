@@ -1,0 +1,1 @@
+please familiarize yourself with the project files, our vision, our theme, what tech we have already implemented, our tech stack, check supabase mcp for what data we have, and then get ready for the next task
